@@ -1,0 +1,7 @@
+{
+    "Name": "Meta CracX",
+    "Version": "0.0.1",
+    "font": "3d",
+    "port": "1-1000",
+    "arguments": "-sSV -T4 -O"
+}
