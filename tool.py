@@ -10,7 +10,6 @@ import platform
 import numpy as np
 from extra.color import Color
 import socket
-import datetime
 
 class Soviet(predict.Predict):
     def __init__(self) -> None:
@@ -38,9 +37,13 @@ class Soviet(predict.Predict):
 
     def nmap(self):
         try:
-            self.user = str(input("\033[0;36m-->\033[1;37m "))
-        except Exception and KeyboardInterrupt:
-            sys.exit(0)
+            try:
+                self.user = str(input("\033[0;36m-->\033[1;37m "))
+            except KeyboardInterrupt:
+                print("\033[1;31mExit....")
+                sys.exit(0)
+        except Exception:
+            self.USER()
 
         nmap = nm.PortScanner()
         scan = nmap.scan(self.user, self.port, self.arg)
@@ -85,9 +88,8 @@ class Soviet(predict.Predict):
         command.sprint(f"{self.name} is Starting....")
         print("\033[0m", end="")
         os.system("clear")
-        self.logo()
-        dt = datetime.datetime()
-        print(f"\033[1;37m\n[ Author : Aman Raj ]\n[ Version : {self.Version} ]\n[ Starting Time & Date : {time.strftime('%H:%M')} & {dt.date()} ]\n [ System Found : {str(platform.system()).capitalize()} ]\033[0m")
+        print(self.logo())
+        print(f"\033[1;37m\n[ Author : Aman Raj ]\n[ Version : {self.Version} ]\n[ Starting Time : {time.strftime('%H:%M')} ]\n[ System Found : {str(platform.system()).capitalize()} ]\033[0m\n\n")
         self.nmap()
         print(f"{Color.BLUE}[+] {Color.WHITE}Port for Scanning => {self.PORT}")
         print(f"{Color.BLUE}[+] {Color.WHITE}State for Detected => {self.STATE}")
