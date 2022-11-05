@@ -32,7 +32,7 @@ class Predict:
     def Exploit_classifier(self, n:int) -> int:
         n = int(n)
         if n == 8:
-            exploit = "exploit/unix/ftp/vsftpd_234_backdoor"
+            exploit = "exploit/unix/ftp/vsftpd_234_backdoor"    # doesnot set Lhost/Port
         elif n == 1:
             exploit = "exploit/linux/misc/gld_postfix"
         elif n == 5:
@@ -42,11 +42,11 @@ class Predict:
         elif n == 4:
             exploit = "exploit/multi/browser/java_rmi_connection_impl"
         elif n == 7:
-            exploit = "exploit/unix/ftp/proftpd_133c_backdoor"
+            exploit = "exploit/unix/ftp/proftpd_133c_backdoor"  # Set payload payload/cmd/unix/generic
         elif n == 3:
             exploit = "exploit/linux/postgres/postgres_payload"
         elif n == 2:
-            exploit = "exploit/linux/misc/igel_command_injection"
+            exploit = "exploit/linux/misc/igel_command_injection" # set srvhost
         elif n == 9:
             exploit = "exploit/unix/irc/unreal_ircd_3281_backdoor"
         else:

