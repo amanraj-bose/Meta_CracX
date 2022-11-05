@@ -102,8 +102,12 @@ class Soviet(predict.Predict):
         print(f"{Color.BLUE}[+] {Color.WHITE}Machine Last Time Boot at => {self.last_boot}")
         print(f"{Color.BLUE}[+] {Color.WHITE}Method Used => \033[1;31m{self.method}\033[0m")
         self.predicted = self.predict(self.PORT, self.STATE, self.SERVICE, self.VERSION)
-        print(f"{Color.BLUE}[+] {Color.WHITE}Exploit Used => {self.predicted}")
-        command.metasploit(self.predicted, self.user, self.lhost()[0])
+        if self.predicted == 'None':
+            print(f"{Color.BLUE}[+] {Color.WHITE}Exploit Used => {self.predicted}")
+            sys.exit(23)
+        else:
+            print(f"{Color.BLUE}[+] {Color.WHITE}Exploit Used => {self.predicted}")
+            command.metasploit(self.predicted, self.user, self.lhost()[0])
 
 
 if __name__ == '__main__':
