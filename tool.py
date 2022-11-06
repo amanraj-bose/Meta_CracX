@@ -56,7 +56,7 @@ class Soviet():
         if self.user_port == "random":
             self.PORT = np.random.choice(np.array(list(self.ip)))
         else:
-            print(f"\033[1;34m[+]\033[1;37m Ported Found => \033[1;32m{list(self.ip)}\033[0m")
+            print(f"\033[1;34m[+]\033[1;37m Ported Found => \033[1;36m{list(self.ip)}\033[0m")
             self.PORT = int(input("\033[1;32m[*]\033[1;37m Select the Port => "))
         self.STATE = main[self.PORT]['state']
         self.SERVICE = main[self.PORT]['name']
