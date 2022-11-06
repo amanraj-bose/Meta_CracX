@@ -111,7 +111,7 @@ class Soviet():
         print(f"{Color.BLUE}[+] {Color.WHITE}Machine Last Time Boot at => {self.last_boot}")
         print(f"{Color.BLUE}[+] {Color.WHITE}Method Used => \033[1;31m{self.method}\033[0m")
         predicted = self.predict.predict(self.PORT, self.STATE, self.SERVICE, self.VERSION)
-        if predicted != 'None' or predicted != None:
+        if predicted == 'None' or predicted == None:
             print(f"{Color.BLUE}[+] {Color.WHITE}Exploit Used => {predicted}")
             sys.exit(23)
         elif predicted == 'exploit/unix/ftp/vsftpd_234_backdoor':
