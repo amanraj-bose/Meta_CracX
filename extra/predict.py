@@ -11,7 +11,7 @@ class Predict:
         self.vullenbillity = joblib.load(port)
         self.exploit = joblib.load(model)
 
-    def predict(self, port:int, state:str, service:str, version:int):
+    def predict(self, port:int, state:str, service:str, version:str):
         if state != 'open':
             warnings.warn("\033[1;31mSorry Port is Closed")
             sys.exit(127)
@@ -21,7 +21,7 @@ class Predict:
                 warnings.filterwarnings('ignore')
                 STATE = 0
                 SERVICE = int(self.service(service))
-                VERSION = self.version(str(version).split()[0])
+                VERSION = self.version(str(str(version).split()[0]))
                 vullenbillity = int(self.vullenbillity.predict([[STATE, SERVICE, VERSION]]))
                 EXPLOITS = int(self.exploit.predict([[port, STATE, SERVICE, VERSION, vullenbillity]]))
 
@@ -70,7 +70,7 @@ class Predict:
             service = 6
         elif n == "rpcbind":
             service = 13
-        elif n == "Netbios-ssn":
+        elif n == "Netbios-ssn" or n == "netbios-ssn":
             service = 0
         elif n == "exec?":
             service = 4
